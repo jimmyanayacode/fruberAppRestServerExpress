@@ -38,8 +38,10 @@ const UserSchema = Schema({
     },
 });
 
+//Configuramos la respuesta para no enviar __V y el password
 UserSchema.methods.toJSON = function(){
-    const { __v, password, ...users } = this.toObject();
+    const { __v, password, _id, ...users } = this.toObject();
+    users.uid = _id;
     return users;
 }
 

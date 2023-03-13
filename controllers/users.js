@@ -65,10 +65,12 @@ const userPatch = ( req, res=response) => {
 const userDelete = async( req, res=response) => {
 
     const { id } = req.params;
+    const { userAuth } = req
 
     const user = await User.findByIdAndUpdate( id, {status:false} );
     res.json({
-        user
+        user,
+        userAuth
     })
 }
 
