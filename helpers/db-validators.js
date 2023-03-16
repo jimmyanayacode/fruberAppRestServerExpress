@@ -1,3 +1,4 @@
+const Category = require('../models/category');
 const Rol = require('../models/rol');
 const User = require('../models/user');
 
@@ -7,6 +8,15 @@ const roleValidate = async(rol = '') => {
     const thereIsThisRole = await Rol.findOne({ rol });
     if (!thereIsThisRole) {
         throw new Error(`El rol ${ rol } no está registrado en la BD`)
+    }
+}
+
+
+const nameValidate = async( nombre = '') => {
+    const thereIsThisName =  await Category.findOne({nombre});
+
+    if (thereIsThisName) {
+        throw new Error( `${nombre} ya esta registrado en la bd`)
     }
 }
 
@@ -29,6 +39,7 @@ const userIdValidate = async( id ) => {
 
 module.exports = {
     emailValidate,
+    nameValidate,
     roleValidate,
     userIdValidate
 }

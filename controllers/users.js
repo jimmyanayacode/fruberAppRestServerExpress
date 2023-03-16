@@ -75,9 +75,9 @@ const userDelete = async( req, res=response) => {
 }
 
 module.exports = {
-    usersGet,
+    userDelete,
     userEdit,
     userPatch,
     userPost,
-    userDelete
+    usersGet,
 }
